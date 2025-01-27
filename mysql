@@ -1,0 +1,66 @@
+CREATE DATABASE ControleDeGastos;
+USE ControleDeGastos;
+
+CREATE TABLE usuarios(
+	idUsuario int not null primary key auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null unique,
+    senha varchar(30) not null
+
+);
+
+CREATE TABLE gastos(
+	idGasto int not null primary key auto_increment,
+    idUsuario int,
+    valor decimal(10,2) not null,
+    dataGasto date,
+    horario time,
+	descricao varchar(100),
+    foreign key (idUsuario) references usuarios(idUsuario)
+);
+
+DELIMITER $$
+
+CREATE TRIGGER before_gastos_insert
+BEFORE INSERT ON gastos
+FOR EACH ROW
+BEGIN
+	IF NEW.dataGasto IS NULL THEN
+		SET NEW.dataGasto = CURDATE(); -- Define a data atual
+	END IF;
+    IF NEW.horario IS NULL THEN
+        SET NEW.horario = CURTIME(); -- Define o horário atual
+    END IF;
+END$$
+
+DELIMITER ;
+
+INSERT INTO usuarios (nome, email, senha)
+VALUES
+('João Silva', 'joao.silva@example.com', 'senha123'),
+('Maria Oliveira', 'maria.oliveira@example.com', 'segredo456'),
+('Carlos Souza', 'carlos.souza@example.com', '123abc'),
+('Ana Costa', 'ana.costa@example.com', 'pass789'),
+('Fernanda Lima', 'fernanda.lima@example.com', 'fernanda@2023');
+
+INSERT INTO gastos (idUsuario, valor, descricao)
+VALUES
+(1, 150.00, 'Compra de supermercado'),     -- Gasto do João Silva
+(2, 75.50, 'Abastecimento de combustível'), -- Gasto da Maria Oliveira
+(3, 200.00, 'Pagamento de conta de luz'),   -- Gasto do Carlos Souza
+(4, 50.00, 'Compra de livros'),             -- Gasto da Ana Costa
+(5, 120.99, 'Manutenção do carro'),         -- Gasto da Fernanda Lima
+(1, 300.00, 'Compras online'),              -- Outro gasto do João Silva
+(2, 89.90, 'Jantar em restaurante'),        -- Outro gasto da Maria Oliveira
+(3, 45.00, 'Academia mensalidade'),         -- Outro gasto do Carlos Souza
+(4, 150.75, 'Medicamentos'),                -- Outro gasto da Ana Costa
+(5, 100.00, 'Cinema e lazer');              -- Outro gasto da Fernanda Lima
+
+INSERT INTO gastos (idUsuario, valor, descricao, dataGasto,horario)
+VALUES
+(1, 150.00, 'Compra de supermercado','2025-01-23','13:00:00');
+
+SELECT * FROM usuarios;
+SELECT * FROM gastos;
+
+-- drop database controledegastos;
