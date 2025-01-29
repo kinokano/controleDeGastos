@@ -5,18 +5,6 @@ if (!isset($_SESSION["idUsuario"])) {
     exit();
 }
 
-if (isset($_POST['logout'])) {
-    // Destrói todas as variáveis de sessão
-    session_unset();
-    
-    // Finaliza a sessão
-    session_destroy();
-    
-    // Redireciona para a página de login ou homepage
-    header("Location: ../../index.php");
-    exit();
-}
-
 include_once __DIR__."/../../backend/controller/userController.php";
 $user = new UserController();
 $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
@@ -29,11 +17,18 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+
 </head>
 <body>
+    <form method="POST" action="./../../backend/router/userRouter.php?acao=logout">
+        <button type="submit" name="logout">Fechar Sessão</button>
+    </form>
+
     <h1>Bem vindo <?php echo $_SESSION["nome"];?></h1>
 
-    <table>
+    <button class="showTabela" id="showTabela">Mostrar Tabela</button>
+    <table class="tabela displayOff" id="tabela">
         <th>
             <tr>
                 <th>Valor</th>
@@ -58,10 +53,12 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
              </tb>
     </table>
 
-
-    <form method="POST">
-        <button type="submit" name="logout">Fechar Sessão</button>
+    <form method="POST" action="./../gasto/gasto.php">
+        <button type="submit" name="logout">Cadastrar</button>
     </form>
 
+
+
+    <script src="home.js"></script>
 </body>
 </html>
