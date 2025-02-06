@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,19 +10,15 @@
 <body>
     
     <body>
-        <form method="POST" action="./backend/router/loginRouter.php?acao=validarLogin">
+        <form method="POST" action="../../backend/router/loginRouter.php?acao=cadastrar">
             <div>
+                <input type="text" name="nome" placeholder="nome" require>
                 <input type="email" name="email" placeholder="email" require>
                 <input type="password" name="senha" placeholder="senha" require>
-                <button type="submit">Logar</button>
+                <button type="submit">Cadastrar</button>
             </div>
         </form>
     </body>
-
-    <form action="./pages/cadastrar/cadastrar.php">
-        <button>Cadastrar</button>
-    </form>
-
 
     <h1> <?php
     if (!empty($_GET['erro_msg'])){

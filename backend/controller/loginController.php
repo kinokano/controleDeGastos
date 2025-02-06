@@ -40,7 +40,29 @@ class LoginController{
         }
 
     }
-    
+
+    public function Cadastro($nome, $email, $senha){
+        try{
+            $sql = "INSERT INTO usuarios(nome, email, senha) VALUES (:nome, :email ,:senha)";
+            $db = $this->conn->prepare($sql);
+            $db = $this->conn->prepare($sql);
+            $db->bindParam(":nome",$nome);
+            $db->bindParam(":email",$email);
+            $db->bindParam(":senha",$senha);
+            
+            if ($db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+        catch (\Exception $e) {
+            // Caso ocorra algum erro durante o processo, exibe uma mensagem de erro
+            echo "Erro: " . $e->getMessage();
+        }
+
+    }
 
 }
 
