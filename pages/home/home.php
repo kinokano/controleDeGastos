@@ -39,6 +39,7 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
         </th>
             <tb>
                 <?php
+                
                 foreach ($gastos as $gasto) {
                 ?>
                     <tr>

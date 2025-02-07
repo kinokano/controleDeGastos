@@ -46,8 +46,9 @@
 
                 }else{
 
-                    header("Location ../../pages/cadastrar/cadastrar.php");
+                    header("Location: ../../pages/cadastrar/cadastrar.php?erro_msg= Todos os campos são obrigatórios!");
                 }
+                break;
 
             default:
                 echo "Não achei nenhuma das opções";
