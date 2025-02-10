@@ -12,6 +12,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             header("Location: ../../index.php");
             exit();
             break;
+
+        case 'inserirGasto':
+            $idUsuario = $_POST["idUsuario"];
+            $descricao = $_POST["descricao"];
+            $valor = $_POST["valor"];
+            $data = $_POST["data"];
+            $horario = $_POST["horario"];
+
+            if(empty($valor)){
+                header("Location: ../../pages/gasto/gasto.php?msg= Campo de valor é obrigatório!");
+            }
+            else{
+                $resposta = $userController ->InserirGasto($idUsuario, $valor, $descricao, $data, $horario);
+                if($resposta){
+                    header("Location: ../../pages/gasto/gasto.php?msg= Gasto inserido com sucesso!");
+                }
+                else{
+                    header("Location: ../../pages/gasto/gasto.php?msg= Erro ao inserir gasto!");
+                }
+            }
+
+            break;
         
         default:
             echo "Login achei nenhuma das opções";

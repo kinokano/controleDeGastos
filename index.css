@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #444c6c;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    background-color: #343c54;
+    height: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    width: 20%;
+    gap: 5px;
+}
+
+.login h1{
+    text-align: left;
+    font-size: 30px;
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+}

@@ -27,6 +27,11 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
 
     <h1>Bem vindo <?php echo $_SESSION["nome"];?></h1>
 
+    
+    <form method="POST" action="./../gasto/gasto.php">
+        <button type="submit" name="logout">Cadastrar Gasto</button>
+    </form>
+
     <button class="showTabela" id="showTabela">Mostrar Tabela</button>
     <table class="tabela displayOff" id="tabela">
         <th>
@@ -53,10 +58,6 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
                 ?>
              </tb>
     </table>
-
-    <form method="POST" action="./../gasto/gasto.php">
-        <button type="submit" name="logout">Cadastrar</button>
-    </form>
 
 
 

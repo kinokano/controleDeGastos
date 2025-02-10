@@ -10,17 +10,18 @@
 </head>
 <body>
     
-    <body>
-        <form method="POST" action="./backend/router/loginRouter.php?acao=validarLogin">
-            <div>
-                <input type="email" name="email" placeholder="email" require>
-                <input type="password" name="senha" placeholder="senha" require>
-                <button type="submit">Logar</button>
-            </div>
-        </form>
-    </body>
+    <div class="login">
+    <h1>Login</h1>
 
-    <form action="./pages/cadastrar/cadastrar.php">
+    <form class="form-login" method="POST" action="./backend/router/loginRouter.php?acao=validarLogin">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="email" require>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" placeholder="senha" require>
+            <button type="submit">Logar</button>
+    </form>
+    
+    <form class="form-login" action="./pages/cadastrar/cadastrar.php">
         <button>Cadastrar</button>
     </form>
 
@@ -30,7 +31,9 @@
     $erro = $_GET['erro_msg'];
     echo $erro;
     }
-?> </h1>
+    ?> </h1>
+
+    </div>
 
 </body>
 </html>
