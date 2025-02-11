@@ -15,15 +15,14 @@
 
     <form class="form-login" method="POST" action="./backend/router/loginRouter.php?acao=validarLogin">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="email" require>
+            <input type="email" name="email" require>
             <label for="senha">Senha</label>
-            <input type="password" name="senha" placeholder="senha" require>
+            <input type="password" name="senha" require>
             <button type="submit">Logar</button>
     </form>
     
-    <form class="form-login" action="./pages/cadastrar/cadastrar.php">
-        <button>Cadastrar</button>
-    </form>
+        <a href="./pages/cadastrar/cadastrar.php">Cadastrar</a>
+   
 
 
     <h1> <?php
