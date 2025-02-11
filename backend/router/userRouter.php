@@ -34,6 +34,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             break;
+
+        case 'deletarGasto':
+            $idGasto = $_POST["idGasto"];
+            echo $idGasto;
+            $deletar = $userController -> DeletarGasto($idGasto);
+            if($deletar){
+                header("Location: ../../pages/home/home.php?msg=Gasto deletado com sucesso!");
+            }
+            else{
+                header("Location: ../../pages/home/home.php?msg=Erro ao deletar gasto!");
+            }
+
+            break;
         
         default:
             echo "Login achei nenhuma das opções";

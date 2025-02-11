@@ -96,4 +96,23 @@ class UserController{
         }
     }
 
+    public function DeletarGasto($idGasto){
+        try{
+            $sql = "DELETE FROM gastos WHERE idGasto = :idGasto";
+            $db = $this->conn->prepare($sql);
+            $db->bindParam(":idGasto",$idGasto);
+            if($db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+            
+        }
+        catch (\Exception $e) {
+            // Caso ocorra algum erro durante o processo, exibe uma mensagem de erro
+            echo "Erro: " . $e->getMessage();
+        }
+    }
+
 }

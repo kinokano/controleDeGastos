@@ -11,7 +11,7 @@
 <body>
     
     <div class="login">
-    <h1>Login</h1>
+    <h1 class="titulo">Login</h1>
 
     <form class="form-login" method="POST" action="./backend/router/loginRouter.php?acao=validarLogin">
             <label for="email">Email</label>
@@ -25,7 +25,7 @@
    
 
 
-    <h1> <?php
+    <h1 class="msgErro"> <?php
     if (!empty($_GET['erro_msg'])){
     $erro = $_GET['erro_msg'];
     echo $erro;

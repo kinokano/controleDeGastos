@@ -32,14 +32,15 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
         <button type="submit" name="logout">Cadastrar Gasto</button>
     </form>
 
-    <button class="showTabela" id="showTabela">Mostrar Tabela</button>
-    <table class="tabela displayOff" id="tabela">
+    <button class="showTabela" id="showTabela">Ocultar Tabela</button>
+    <table class="tabela displayOn" id="tabela">
         <th>
             <tr>
                 <th>Valor</th>
                 <th>Descrição</th>
                 <th>Data</th>
                 <th>Horário</th>
+                <th>Ação</th>
             </tr>
         </th>
             <tb>
@@ -52,6 +53,14 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
                         <td><?php echo $gasto['descricao']; ?></td>
                         <td><?php echo $gasto['dataGasto']; ?></td>
                         <td><?php echo $gasto['horario']; ?></td>
+                        <td>
+                            <form method="POST" action="./../../backend/router/userRouter.php?acao=deletarGasto">
+                                <input type="hidden" name="idGasto" value=<?php echo $gasto['idGasto'];?>>
+                                <button type="submit">
+                                    Apagar
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 <?php
                 }
@@ -59,6 +68,12 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
              </tb>
     </table>
 
+    <h1 class="msgErro"> <?php
+    if (!empty($_GET['msg'])){
+    $erro = $_GET['msg'];
+    echo $erro;
+    }
+    ?> </h1>
 
 
     <script src="home.js"></script>

@@ -26,7 +26,7 @@ body{
     justify-content: space-between;
 }
 
-.login h1{
+.login .titulo{
     text-align: left;
     font-size: 30px;
     color: white;
@@ -83,4 +83,11 @@ a{
 a:hover{
     color: rgb(175, 175, 175);
     transition: 0.2s ease-in-out ;
+}
+
+.login .msgErro{
+    color: red;
+    text-align: center;
+    font-weight: 600;
+    font-size: large;
 }
