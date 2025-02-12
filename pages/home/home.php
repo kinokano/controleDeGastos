@@ -4,11 +4,6 @@ if (!isset($_SESSION["idUsuario"])) {
     header('Location: ../../index.php');
     exit();
 }
-
-include_once __DIR__."/../../backend/controller/userController.php";
-$user = new UserController();
-$gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
-
 ?>
 
 <!DOCTYPE html>
@@ -21,61 +16,26 @@ $gastos = $user->GetAllGastos($_SESSION["idUsuario"]);
 
 </head>
 <body>
-    <form method="POST" action="./../../backend/router/userRouter.php?acao=logout">
-        <button type="submit" name="logout">Fechar Sessão</button>
-    </form>
+   
+    <div class="main">
 
-    <h1>Bem vindo <?php echo $_SESSION["nome"];?></h1>
+    <h1 class="titulo">Bem vindo <?php echo $_SESSION["nome"];?></h1>
 
     
-    <form method="POST" action="./../gasto/gasto.php">
-        <button type="submit" name="logout">Cadastrar Gasto</button>
+    <form action="./../gasto/gasto.php">
+        <button>Cadastrar Gasto</button>
     </form>
 
-    <button class="showTabela" id="showTabela">Ocultar Tabela</button>
-    <table class="tabela displayOn" id="tabela">
-        <th>
-            <tr>
-                <th>Valor</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Ação</th>
-            </tr>
-        </th>
-            <tb>
-                <?php
-                
-                foreach ($gastos as $gasto) {
-                ?>
-                    <tr>
-                        <td><?php echo $gasto['valor']; ?></td>
-                        <td><?php echo $gasto['descricao']; ?></td>
-                        <td><?php echo $gasto['dataGasto']; ?></td>
-                        <td><?php echo $gasto['horario']; ?></td>
-                        <td>
-                            <form method="POST" action="./../../backend/router/userRouter.php?acao=deletarGasto">
-                                <input type="hidden" name="idGasto" value=<?php echo $gasto['idGasto'];?>>
-                                <button type="submit">
-                                    Apagar
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-             </tb>
-    </table>
+    <form action="./../consultar/consultar.php">
+        <button>Consultar Gastos</button>
+    </form>
 
-    <h1 class="msgErro"> <?php
-    if (!empty($_GET['msg'])){
-    $erro = $_GET['msg'];
-    echo $erro;
-    }
-    ?> </h1>
+    <form method="POST" action="./../../backend/router/userRouter.php?acao=logout">
+        <button name="logout">Logout</button>
+    </form>
+
+    </div>
 
 
-    <script src="home.js"></script>
 </body>
 </html>

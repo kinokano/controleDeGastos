@@ -40,10 +40,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo $idGasto;
             $deletar = $userController -> DeletarGasto($idGasto);
             if($deletar){
-                header("Location: ../../pages/home/home.php?msg=Gasto deletado com sucesso!");
+                header("Location: ../../pages/consultar/consultar.php?msg=Gasto deletado com sucesso!");
             }
             else{
-                header("Location: ../../pages/home/home.php?msg=Erro ao deletar gasto!");
+                header("Location: ../../pages/consultar/consultar.php?msg=Erro ao deletar gasto!");
             }
 
             break;

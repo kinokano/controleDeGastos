@@ -17,13 +17,13 @@ if (!isset($_SESSION["idUsuario"])) {
 </head>
 <body>
     
-    <form method="POST" action="./../home/home.php">
+    <div class="main">
+
+    <form class="voltar" method="POST" action="./../home/home.php">
         <button>Voltar</button>
     </form>
     
-    <h1>Gasto</h1>
-
-    <form method="POST" action="./../../backend/router/userRouter.php?acao=inserirGasto">
+    <form class="gasto" method="POST" action="./../../backend/router/userRouter.php?acao=inserirGasto">
         <input type="hidden" name="idUsuario" value="<?php echo $_SESSION["idUsuario"]?>" >
 
         <label for="descricao">Descrição</label>
@@ -38,15 +38,17 @@ if (!isset($_SESSION["idUsuario"])) {
         <label for="horario">Horário</label>
         <input type="time" name="horario">
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Cadastrar Gasto</button>
     </form>
 
-    <h1> <?php
+    <h1 class="msg"> <?php
     if (!empty($_GET['msg'])){
-    $erro = $_GET['msg'];
-    echo $erro;
+    $msg = $_GET['msg'];
+    echo $msg;
     }
 ?> </h1>
+
+</div>
 
 
 </body>
