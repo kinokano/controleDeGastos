@@ -21,8 +21,8 @@ body{
   display: flex;
   flex-direction: column;
   background-color: #343c54;
-  height: 45%;
   padding: 20px;
+  min-height: 45%;
   width: 350px;
   justify-content: space-between;
   align-items: center;
