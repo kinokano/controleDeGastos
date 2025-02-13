@@ -19,7 +19,7 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #343c54;
-    height: 35%;
+    min-height: 35%;
     padding: 20px;
     width: 350px;
     gap: 5px;

@@ -115,4 +115,22 @@ class UserController{
         }
     }
 
+    public function GetGastosByMonth($idUsuario,$mes){
+        try{
+            $sql = "SELECT * FROM gastos WHERE idUsuario = :idUsuario AND MONTH(dataGasto) = :mes";
+            $db = $this->conn->prepare($sql);
+            $db->bindParam(":idUsuario",$idUsuario);
+            $db->bindParam(":mes",$mes);
+
+            $db->execute();
+            
+            $gastos = $db->fetchAll(PDO::FETCH_ASSOC);
+            return $gastos;
+        }
+        catch (\Exception $e) {
+            // Caso ocorra algum erro durante o processo, exibe uma mensagem de erro
+            echo "Erro: " . $e->getMessage();
+        }
+    }
+
 }

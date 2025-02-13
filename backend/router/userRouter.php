@@ -37,7 +37,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         case 'deletarGasto':
             $idGasto = $_POST["idGasto"];
-            echo $idGasto;
             $deletar = $userController -> DeletarGasto($idGasto);
             if($deletar){
                 header("Location: ../../pages/consultar/consultar.php?msg=Gasto deletado com sucesso!");
@@ -45,6 +44,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             else{
                 header("Location: ../../pages/consultar/consultar.php?msg=Erro ao deletar gasto!");
             }
+
+            break;
+        
+        case 'filtroMes':
+            $mes = $_POST['mes'];
+            header("Location: ../../pages/consultar/consultar.php?filtroMes=".$mes);
 
             break;
         

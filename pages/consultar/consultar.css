@@ -109,3 +109,39 @@ tr:nth-child(even) {
     background-color: #853a4c;
     cursor: pointer;
 }
+
+.msg{
+  margin-top: 20px;
+  color: white;
+}
+
+.total td{
+  text-align: right;
+  margin-right: 30px;
+  font-size: large;
+  font-weight: bold;
+}
+
+select{
+  background-color: rgba(255, 255, 255, 0.616);
+}
+
+.filtro{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filtro button{
+  background-color: #4ba86a;
+    color: white;
+    height: 35px;
+    padding: 10px;
+
+}
+
+.filtro button:hover{
+  transition: 0.2s ease-in-out ;
+  background-color: #34774b;
+  cursor: pointer;
+}
