@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/index.css'%}">
+<div class="login">
+    <h1 class="titulo">Login</h1>
+
+    <form id='loginForm' class="form-login" method="POST" >
+        {% csrf_token %}
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id='email' require>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id='senha' require>
+            <button type="submit">Logar</button>
+
+    </form>
+    
+    <a href="/cadastrar">Cadastrar</a>
+
+    <h1 class="msgErro">  </h1>
+</div>
+
+<script src="{% static 'js/index.js'%}"></script>
+
+{% endblock %}
