@@ -9,3 +9,6 @@ def home(request):
         return redirect('index')
 
     return render(request, 'home.html')
+
+def cadastrar(request):
+    return render(request, 'cadastrar.html')

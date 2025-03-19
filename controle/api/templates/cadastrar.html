@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/cadastrar.css' %}">
+
+    <button id='voltar'>
+        Voltar
+    </button>
+
+    <body>
+        <form method="POST" id='cadastroForm'>
+            {% csrf_token %}
+            <div>
+                <input type="text" id="nome" placeholder="nome" require>
+                <input type="email" id="email" placeholder="email" require>
+                <input type="password" id="senha" placeholder="senha" require>
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </body>
+
+    <h1>  </h1>
+
+    <script src="{% static 'js/cadastrar.js'%}"></script>
+    
+{% endblock %}

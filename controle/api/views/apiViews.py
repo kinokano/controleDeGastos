@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import make_password
 
+
 class User(APIView):
     def get(self, request, id=None):
         if id:
@@ -20,16 +21,17 @@ class User(APIView):
 
     def post(self, request):
         nome = request.data.get('nome')
+        email = request.data.get('email')
         senha = request.data.get('senha')
 
         if not nome or not senha:
             return Response({"error": "Todos os campos são obrigatórios!", "status": status.HTTP_400_BAD_REQUEST}, status= status.HTTP_400_BAD_REQUEST)
 
         usuario = CustomUser.objects.create(
-            username = nome,
+            username = email,
+            first_name = nome,
             password = make_password(senha),
-            is_active = True,
-            is_aluno = True
+            is_active = True
         )
         return Response({"message":"Usuário criado com sucesso!", "id":usuario.id, "status": status.HTTP_201_CREATED}, status= status.HTTP_201_CREATED)
 

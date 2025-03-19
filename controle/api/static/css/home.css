@@ -38,6 +38,7 @@ button{
     background-color: #a84b60;
     color: white;
     height: 40px;
+    width: 100%;
 
 }
 
@@ -47,8 +48,8 @@ button:hover{
     cursor: pointer;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+
+.nomeUsuario{
+    color: white;
+    margin-bottom: 10px;
 }
