@@ -70,6 +70,7 @@ class Login(APIView):
             return Response({"status": status.HTTP_200_OK})
         else:
             return Response({"mensagem": "Usuario nao encontrado!", "status": status.HTTP_401_UNAUTHORIZED})
+    
         
 class GetDadosUsuarioLogado(APIView):
     def get(self, request):
@@ -80,3 +81,7 @@ class GetDadosUsuarioLogado(APIView):
             return Response(serializer.data)
 
         return Response(usuarioId)
+
+class GastosViewSet(viewsets.ModelViewSet):
+    queryset = Gastos.objects.all()
+    serializer_class = GastosSerializer

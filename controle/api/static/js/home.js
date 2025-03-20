@@ -7,3 +7,17 @@ document.addEventListener("DOMContentLoaded", function(){
     
     GetUserLogado()
 })
+
+function gasto(){
+    window.location.href = "/gasto";
+}
+
+document.getElementById('gasto').addEventListener("click", gasto)
+
+
+function logout(){
+    window.location.href = "/logout";
+
+}
+
+document.getElementById('logout').addEventListener("click", logout)

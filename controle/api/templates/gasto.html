@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gastos{% endblock %}
+
+{% block content %}
+    
+<link rel="stylesheet" href="{% static 'css/gasto.css' %}">
+
+<div class="main">
+
+
+    <button id='voltar'>Voltar</button>
+
+    
+    <form class="gasto" id='cadastroGasto'>
+        {% csrf_token %}
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" placeholder="Título">
+
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" placeholder="Descrição">
+
+        <label for="valor">Valor</label>
+        <input type="text" id="valor" placeholder="50.00">
+
+        <label for="data">Data</label>
+        <input type="date" id="dataGasto">
+
+        <label for="horario">Horário</label>
+        <input type="time" id="horario">
+
+        <button type="submit">Cadastrar Gasto</button>
+    </form>
+
+    <h1 class="msg">  </h1>
+
+</div>
+
+<script src="{% static 'js/gasto.js'%}"></script>
+
+{% endblock %}
+
+
