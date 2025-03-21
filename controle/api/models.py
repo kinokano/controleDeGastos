@@ -10,9 +10,9 @@ class CustomUser(AbstractUser):
 class Gastos(models.Model):
     titulo = models.CharField( max_length=255, null=False, blank=False)
     valor = models.DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
-    horario = models.TimeField(null=True, blank=True)
-    dataGasto = models.DateField(null=True, blank=True)
-    descricao = models.TextField(null=True, blank=True)
+    horario = models.TimeField(null=True, blank=True, default= False)
+    dataGasto = models.DateField(null=True, blank=True, default = False)
+    descricao = models.TextField(null=True, blank=True, default = False)
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
